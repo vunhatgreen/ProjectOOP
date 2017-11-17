@@ -37,10 +37,10 @@ public class Path {
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		TIMER++;
 	
-		if(TIMER == 300) {
-			TIMER = 0;
+		if(TIMER == 100) {
 			HUD.WAVE++;
-			
+			TIMER = 0;
+			System.out.println(TIMER);
 		//Level 1
 			if(HUD.WAVE == 1) {
 				handler.addObject(new Enemy(1*((Main.WIDTH-50)/4), 0-32, ID.Enemy1, handler));
@@ -52,17 +52,23 @@ public class Path {
 			if(HUD.WAVE == 3) {
 				handler.addObject(new Enemy(r.nextInt(10)*((Main.WIDTH-32)/10), 0-32, ID.Enemy1, handler));
 				handler.addObject(new Enemy(r.nextInt(10)*((Main.WIDTH-32)/10), 0-32, ID.Enemy1, handler));
-				handler.addObject(new Enemy(r.nextInt(10)*((Main.WIDTH-32)/10), 0-32, ID.Enemy1, handler));
 			}
 			if(HUD.WAVE == 4) {
 				handler.addObject(new Enemy(r.nextInt(10)*((Main.WIDTH-32)/10), Main.HEIGHT + 250, ID.Enemy2, handler));
 			}
-			if(HUD.WAVE == 6) {
-				handler.addObject(new EnemyBoss(Main.WIDTH/2-150, 0-100, ID.EnemyBoss1, handler));
+			if(HUD.WAVE == 5) {
+				handler.addObject(new Enemy(r.nextInt(10)*((Main.WIDTH-32)/10), 0-32, ID.Enemy1, handler));
 			}
-		}
+			if(HUD.WAVE == 6) {
+				handler.addObject(new Enemy(r.nextInt(10)*((Main.WIDTH-32)/10), 0-32, ID.Enemy1, handler));
+			}
+			if(HUD.WAVE == 7) {
+				handler.addObject(new Enemy(r.nextInt(10)*((Main.WIDTH-32)/10), 0-32, ID.Enemy1, handler));
+			}
+			if(HUD.WAVE == 8) {
+				handler.addObject(new EnemyBoss(Main.WIDTH/2-150, 0-100, ID.EnemyBoss1, handler));
+			} 
 			
+		}
 	}
-
-
 }

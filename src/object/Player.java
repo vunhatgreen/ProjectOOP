@@ -47,21 +47,29 @@ public class Player extends Object{
 		
 		Input input = gc.getInput();
 
-		if(x != Mouse.getX()) x = Mouse.getX();
+		/*if(x != Mouse.getX()) x = Mouse.getX();
 			x = new Block(x, 5, Main.WIDTH-105).clamp();
 		if(y != Mouse.getY()) y = Main.HEIGHT-Mouse.getY();
 			y = new Block(y, 5, Main.HEIGHT-105).clamp();
 		if(input.isMouseButtonDown(0))
-			if(Path.TIMER % 10 == 0) handler.addObject(new Bullet(x+42, y-15, ID.Bullet, handler));
+			if(Path.TIMER % 10 == 0) handler.addObject(new Bullet(x+42, y-15, ID.Bullet, handler));*/
 		
 		
-//		if(input.isKeyDown(Input.KEY_UP)) y -= delta * .3;
-//		if(input.isKeyDown(Input.KEY_DOWN)) y += delta * .3;
-//		if(input.isKeyDown(Input.KEY_LEFT)) x -= delta * .5;
-//		if(input.isKeyDown(Input.KEY_RIGHT)) x += delta * .5;
-//		if(input.isKeyDown(Input.KEY_SPACE))
-//			if(Path.TIMER % 10 == 0) handler.addObject(new Bullet(x+42, y-15, ID.Bullet, handler));
+		if(input.isKeyDown(Input.KEY_UP) && y > 10) y -= delta * .3;
+		if(input.isKeyDown(Input.KEY_DOWN) && y < Main.HEIGHT - 110) y += delta * .3;
+		if(input.isKeyDown(Input.KEY_LEFT) && x > 10) x -= delta * .5;
+		if(input.isKeyDown(Input.KEY_RIGHT) && x < Main.WIDTH - 110) x += delta * .5;
+		if(input.isKeyDown(Input.KEY_SPACE)) {
+			if(HUD.POWER == 1)
+				if(Path.TIMER % 10 == 0) handler.addObject(new Bullet(x+42, y-15, ID.Bullet, handler));
+			if(HUD.POWER >= 2)
+				if(Path.TIMER % 10 == 0) {
+					handler.addObject(new Bullet(x+32, y-15, ID.Bullet, handler));
+					handler.addObject(new Bullet(x+52, y-15, ID.Bullet, handler));
+				}
 		
+		}
+			
 		for(int i = 0; i < handler.object.size(); i++) {
 			Object tempObj = handler.object.get(i);
 			//with enemy	
@@ -70,6 +78,16 @@ public class Player extends Object{
 						handler.removeObject(tempObj);
 						HUD.LIVE--;
 					}		
+				if(tempObj.getId() == ID.Heal) 
+					if(this.getBounds().intersects(tempObj.getBounds())) {
+						handler.removeObject(tempObj);
+						HUD.LIVE++;
+					}
+				if(tempObj.getId() == ID.Power) 
+					if(this.getBounds().intersects(tempObj.getBounds())) {
+						handler.removeObject(tempObj);
+						HUD.POWER++;
+					}
 		}
 		
 		

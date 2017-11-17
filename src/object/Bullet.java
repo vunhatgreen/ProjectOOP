@@ -12,7 +12,8 @@ public class Bullet extends Object{
 	
 
 //CREATE_________________________________________________________________________________________________________
-	
+	private final int WIDTH = 16;
+	private final int HEIGHT = 18;
 	
 	public Bullet(float x, float y, ID id, Handler handler) {
 		super(x, y, id, handler);
@@ -22,7 +23,7 @@ public class Bullet extends Object{
 
 	public Rectangle getBounds() {
 		// TODO Auto-generated method stub
-		return null;
+		return new Rectangle((int)x, (int)y, this.WIDTH, this.HEIGHT);
 	}
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -44,7 +45,7 @@ public class Bullet extends Object{
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		x += velX;
 		y += velY;
-		if(y < 0) {
+		if(y < 0 || y > Main.HEIGHT) {
 			handler.removeObject(this);
 		}
 	

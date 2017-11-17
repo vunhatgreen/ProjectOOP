@@ -35,7 +35,7 @@ public class Main extends StateBasedGame{
 			AppGameContainer appgc;
 			appgc = new AppGameContainer(new Main(TITLE));
 			appgc.setDisplayMode(WIDTH, HEIGHT, false);
-			appgc.setMouseGrabbed(true);
+			appgc.setMouseGrabbed(false);
 			appgc.setTargetFrameRate(60);
 //			appgc.setShowFPS(false);
 			appgc.start();

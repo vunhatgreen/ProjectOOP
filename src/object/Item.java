@@ -9,29 +9,25 @@ import game.*;
 import game.Object;
 import support.*;
 
-public class HUD extends Object{
+public class Item extends Object{
 	
 
 //CREATE_________________________________________________________________________________________________________
 	
+	private int timer;
+	private final int WIDTH = 15;
+	private final int HEIGHT = 20;
 	
-	public static int TIMER = 0;
-	public static int WAVE = 0;
-	public static int LIVE = 3;
-	public static int POWER = 1;
-	public static int SCORE = 0;
-	
-	public HUD(int x, int y, ID id, Handler handler) {
+	public Item(float x, float y, ID id, Handler handler) {
 		super(x, y, id, handler);
 	}
 
 
 	public Rectangle getBounds() {
-		return null;
+		return new Rectangle((int)x, (int)y, 15, 20);
 	}
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		
 	}
 	
 
@@ -40,11 +36,10 @@ public class HUD extends Object{
 	
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		for(int i = 0; i < HUD.LIVE; i++) {
-			g.drawImage(new Image("res/img/spr/lives.png"), 15+i*20, Main.HEIGHT-30);
-		}
 		
-		g.drawString(String.format("%06d", SCORE), Main.WIDTH-70, Main.HEIGHT-30);
+		if(id == ID.Heal) g.drawImage(new Image("res/img/spr/heal.png"), x, y);
+		if(id == ID.Power) g.drawImage(new Image("res/img/spr/power.png"), x, y);
+		
 	}
 	
 
@@ -52,7 +47,16 @@ public class HUD extends Object{
 
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-		TIMER++;
+		
+		x += velX;
+		y += velY + timer++/3;
+
+		
+		if(y > Main.HEIGHT) {
+			handler.removeObject(this);
+		}
+		
+		
 	}
 
 
