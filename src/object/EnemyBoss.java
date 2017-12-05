@@ -75,8 +75,10 @@ public class EnemyBoss extends Object{
 						handler.removeObject(tempObj);
 						this.health--;
 						if(this.isDead() == true) {
+							
 							handler.removeObject(this);
 							HUD.SCORE += 50;
+							
 						}
 					}		
 			}
