@@ -45,7 +45,7 @@ public class Bullet extends Object{
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		x += velX;
 		y += velY;
-		if(y < 0 || y > Main.HEIGHT) {
+		if(y < 0) {
 			handler.removeObject(this);
 		}
 	

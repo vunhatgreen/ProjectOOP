@@ -1,7 +1,6 @@
 package object;
 
 import java.awt.Rectangle;
-import java.util.Random;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
@@ -14,10 +13,8 @@ public class Enemy extends Object{
 
 //CREATE_________________________________________________________________________________________________________
 	
-	private int health = 3;
 	private final int WIDTH = 100;
 	private final int HEIGHT = 80;
-	private Random r = new Random();
 	
 	public Enemy(float x, float y, ID id, Handler handler) {
 		super(x, y, id, handler);
@@ -65,31 +62,15 @@ public class Enemy extends Object{
 	//Carry object
 //			if(r.nextInt(4)%2 == 0) handler.addObject(new Heal(x+15, y, ID.Heal, handler));
 //			if(r.nextInt(9)%3 == 0) handler.addObject(new Power(x+15, y, ID.Power, handler));
-		
-		//Check collision
 		for(int i = 0; i < handler.object.size(); i++) {
 			Object tempObj = handler.object.get(i);
-			//with bullet	
+			//with enemy	
 				if(tempObj.getId() == ID.Bullet) 
 					if(this.getBounds().intersects(tempObj.getBounds())) {
-						this.health -= 1;
-						handler.removeObject(tempObj);
-						if(health == 0) handler.removeObject(this);
-					}
-			//with player	
-				if(tempObj.getId() == ID.Player) 
-					if(this.getBounds().intersects(tempObj.getBounds())) {
 						handler.removeObject(this);
+						HUD.SCORE += 10;
 					}		
-		
 		}
-		
-		
-		
-		
-		
-		
-		
 	}
 
 

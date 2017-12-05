@@ -65,26 +65,25 @@ public class EnemyBoss extends Object{
 //					handler.addObject(new EnemyBullet(x+25, y+90, ID.EnemyBullet, handler));
 //					handler.addObject(new EnemyBullet(x+70, y+90, ID.EnemyBullet, handler));
 				}
-			
-			//Check collision
 			for(int i = 0; i < handler.object.size(); i++) {
 				Object tempObj = handler.object.get(i);
-				//with bullet	
-				if(tempObj.getId() == ID.Bullet) 
-					if(this.getBounds().intersects(tempObj.getBounds())) {
-						handler.removeObject(tempObj);
-						this.health--;
-						if(this.isDead() == true) {
-							
-							handler.removeObject(this);
-							HUD.SCORE += 50;
-							
-						}
-					}		
+				//with enemy	
+					if(tempObj.getId() == ID.Bullet) 
+						if(this.getBounds().intersects(tempObj.getBounds())) {
+							handler.removeObject(tempObj);
+							this.health--;
+							if(this.isDead() == true) {
+								handler.removeObject(this);
+								HUD.SCORE += 50;
+							}
+						}		
 			}
+			}
+		
+		
+		if(y > Main.HEIGHT) {
+			handler.removeObject(this);
 		}
-		
-		
 	//Carry object
 //			if(r.nextInt(4)%2 == 0) handler.addObject(new Heal(x+15, y, ID.Heal, handler));
 //			if(r.nextInt(9)%3 == 0) handler.addObject(new Power(x+15, y, ID.Power, handler));
