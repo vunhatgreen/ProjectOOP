@@ -19,9 +19,6 @@ public class EnemyBoss extends Object{
 	private int health = 100;
 	private float velY = 0.1f;
 	private float velX = 0.05f;
-	private final int WIDTH = 300;
-	private final int HEIGHT = 180;
-	
 	public EnemyBoss(float x, float y, ID id, Handler handler) {
 		super(x, y, id, handler);
 	}
@@ -29,7 +26,7 @@ public class EnemyBoss extends Object{
 
 	public Rectangle getBounds() {
 		// TODO Auto-generated method stub
-		return new Rectangle((int)x, (int)y, this.WIDTH, this.HEIGHT);
+		return null;
 	}
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -64,20 +61,7 @@ public class EnemyBoss extends Object{
 //				if(timer++ % 100 == 0) {
 //					handler.addObject(new EnemyBullet(x+25, y+90, ID.EnemyBullet, handler));
 //					handler.addObject(new EnemyBullet(x+70, y+90, ID.EnemyBullet, handler));
-				}
-			for(int i = 0; i < handler.object.size(); i++) {
-				Object tempObj = handler.object.get(i);
-				//with enemy	
-					if(tempObj.getId() == ID.Bullet) 
-						if(this.getBounds().intersects(tempObj.getBounds())) {
-							handler.removeObject(tempObj);
-							this.health--;
-							if(this.isDead() == true) {
-								handler.removeObject(this);
-								HUD.SCORE += 50;
-							}
-						}		
-			}
+				}	
 			}
 		
 		
@@ -87,14 +71,9 @@ public class EnemyBoss extends Object{
 	//Carry object
 //			if(r.nextInt(4)%2 == 0) handler.addObject(new Heal(x+15, y, ID.Heal, handler));
 //			if(r.nextInt(9)%3 == 0) handler.addObject(new Power(x+15, y, ID.Power, handler));
+			
 		
-		}
-	
-	public boolean isDead() {
-		if(this.health == 0){
-			return true;
-		}
-		else { return false; }
+		
 	}
 
 

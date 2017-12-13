@@ -38,9 +38,9 @@ public class Path {
 		TIMER++;
 	
 		if(TIMER == 300) {
-			HUD.WAVE++;
 			TIMER = 0;
-			System.out.println(TIMER);
+			HUD.WAVE++;
+			
 		//Level 1
 			if(HUD.WAVE == 1) {
 				handler.addObject(new Enemy(1*((Main.WIDTH-50)/4), 0-32, ID.Enemy1, handler));
@@ -59,8 +59,10 @@ public class Path {
 			}
 			if(HUD.WAVE == 6) {
 				handler.addObject(new EnemyBoss(Main.WIDTH/2-150, 0-100, ID.EnemyBoss1, handler));
-			} 
-			
+			}
 		}
+			
 	}
+
+
 }

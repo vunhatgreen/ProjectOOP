@@ -18,7 +18,7 @@ public class HUD extends Object{
 	public static int TIMER = 0;
 	public static int WAVE = 0;
 	public static int LIVE = 3;
-	public static int SCORE = 0;
+	private static int SCORE = 0;
 	
 	public HUD(int x, int y, ID id, Handler handler) {
 		super(x, y, id, handler);

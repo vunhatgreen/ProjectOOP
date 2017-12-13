@@ -8,7 +8,7 @@ public enum ID {
 	Enemy1(),
 	Enemy2(),
 	EnemyBoss1(),
-	EnemyBullet(), Heal, Power;
+	EnemyBullet();
 //Effect	
 	
 }
