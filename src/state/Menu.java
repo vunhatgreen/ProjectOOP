@@ -2,7 +2,11 @@ package state;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
+
+
 import game.Main;
+
+
 
 import org.lwjgl.input.Mouse;
 
@@ -10,7 +14,7 @@ public class Menu extends BasicGameState{
 	
 //CREATE_________________________________________________________________________________________________________
 	
-	
+	private Music music;
 	int xpos;
 	int ypos;
 	
@@ -18,6 +22,10 @@ public class Menu extends BasicGameState{
 	}
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+		//adding sound
+		music = new Music("Sound/Protectors_Of_The_Earth_-_Two_Steps_From_128kbps_M.wav");
+		music.loop();
+		music.play();
 	}
 
 	
@@ -30,6 +38,7 @@ public class Menu extends BasicGameState{
 		g.drawString("NEVERWING VERSION 0.1", Main.WIDTH/2-100, 70);
 		g.drawString("Press SPACE to continue", Main.WIDTH/2-100, Main.HEIGHT-100);
 //		g.drawString(xpos + " " + ypos, 200, 200);
+		
 	}
 	
 	
@@ -48,8 +57,8 @@ public class Menu extends BasicGameState{
 		}
 		if(input.isKeyDown(input.KEY_SPACE))
 			sbg.enterState(1);
+		
 	}
-	
 	
 //ID_____________________________________________________________________________________________________________
 	
@@ -57,5 +66,6 @@ public class Menu extends BasicGameState{
 	public int getID() {
 		return 0;
 	}
-
+	
+	
 }
